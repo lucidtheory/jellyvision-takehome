@@ -7,14 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { compileRepoStruct } from "./utils";
+import { compileRepoStruct, IEvent, Repo } from "./utils";
 
-interface Repo {
-  events: {
-    [eventType: string]: number;
-  }
-  isOwnRepo: boolean;
-}
 
 interface AllRepos {
   [repoName: string]: Repo;
@@ -23,7 +17,7 @@ interface AllRepos {
 const GITHUB_API__ROOT_URL = "https://api.github.com/users/";
 export default function Index() {
   const [username, setUsername] = useState<string>("");
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<IEvent[]>([]);
   const [allRepos, setAllRepos] = useState<AllRepos>({});
 
   const handleSearch = () => {

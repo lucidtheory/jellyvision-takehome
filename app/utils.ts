@@ -1,21 +1,21 @@
-interface Repo {
+export interface Repo {
     events: {
       [eventType: string]: number;
     }
     isOwnRepo: boolean;
   }
   
-  interface AllRepos {
+  export interface AllRepos {
     [repoName: string]: Repo;
   }
 
-  interface Event {
+  export interface IEvent {
     repo: {
         name: string
     },
     type: string;
   }
-export const compileRepoStruct = (events: Event[], username: string): AllRepos => {
+export const compileRepoStruct = (events: IEvent[], username: string): AllRepos => {
     const allRepos: AllRepos = {};
     events.forEach(event => {
       const repoName = event.repo.name;
